@@ -16,6 +16,7 @@
 
 package androidx.navigation.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
 import androidx.navigation.Navigator;
 
-import com.cai.base.R;
+import com.androidx.navigation.R;
 
 
 /**
@@ -348,6 +349,7 @@ public class NavHostFragment extends Fragment implements NavHost {
 
     @CallSuper
     @Override
+    @SuppressLint("PrivateResource")
     public void onInflate(@NonNull Context context, @NonNull AttributeSet attrs,
                           @Nullable Bundle savedInstanceState) {
         super.onInflate(context, attrs, savedInstanceState);
