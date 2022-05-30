@@ -17,7 +17,7 @@ import java.lang.reflect.Field
 class KVStore internal constructor(clazz: Class<*>) {
 
     // 绑定的具体实体类
-    internal var entity: IStore
+    internal var entity: IKV
 
     // 所有的可操作变量
     private var fields = mutableMapOf<String, Field>()
@@ -32,11 +32,11 @@ class KVStore internal constructor(clazz: Class<*>) {
     private var isGsonRename = false
 
     init {
-        if (IStore::class.java.isAssignableFrom(clazz).not()) {
+        if (IKV::class.java.isAssignableFrom(clazz).not()) {
             throw RuntimeException("[KVStore] The class [${clazz.simpleName}] must be subclass of BaseStore")
         }
 
-        entity = clazz.newInstance() as IStore
+        entity = clazz.newInstance() as IKV
         isGsonRename = sIsGsonAnnotation
         preferences = MMKVProxy(
             MMKV.mmkvWithID(
@@ -45,7 +45,7 @@ class KVStore internal constructor(clazz: Class<*>) {
             )
         )
         var type = clazz
-        while (type != IStore::class.java) {
+        while (type != IKV::class.java) {
             for (field in type.declaredFields) {
                 if (field.isAnnotationPresent(FieldIgnore::class.java)) {
                     // 指定过滤此字段

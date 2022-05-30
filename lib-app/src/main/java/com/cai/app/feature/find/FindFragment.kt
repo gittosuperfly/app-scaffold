@@ -5,9 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 
-class FindFragment:Fragment() {
+class FindFragment : Fragment() {
 
-    val viewModel :FindViewModel by viewModels()
+    val viewModel: FindViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

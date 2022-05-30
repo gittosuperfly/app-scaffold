@@ -1,18 +1,12 @@
 package com.cai.app
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
+import com.cai.architecture.ui.databinding.DataBindingActivity
+import com.cai.architecture.ui.databinding.DataBindingConfig
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-
-    private val viewModel:MainShareViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        viewModel.init()
-    }
+class MainActivity : DataBindingActivity() {
+    override fun getDataBindingConfig() = DataBindingConfig(R.layout.activity_main)
 }
