@@ -1,16 +1,10 @@
 package com.cai.app.feature.find
 
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import com.cai.app.R
+import com.cai.app.databinding.FragmentFindBinding
+import com.cai.architecture.ui.databinding.DataBindingConfig
+import com.cai.architecture.ui.databinding.DataBindingFragment
 
-class FindFragment : Fragment() {
-
-    val viewModel: FindViewModel by viewModels()
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
+class FindFragment : DataBindingFragment<FragmentFindBinding>() {
+    override fun getDataBindingConfig() = DataBindingConfig(R.layout.fragment_find)
 }
