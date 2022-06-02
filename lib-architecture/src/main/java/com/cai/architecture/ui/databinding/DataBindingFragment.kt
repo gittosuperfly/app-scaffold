@@ -13,36 +13,14 @@ import com.cai.base.navigation.NavHostFragment
 
 abstract class DataBindingFragment<BINDING : ViewDataBinding> : Fragment() {
 
+    lateinit var binding: BINDING
 
-    private var isBindingInit = false
-    private var binding: BINDING? = null
-
-    protected abstract fun getDataBindingConfig(): DataBindingConfig
+    protected abstract fun getLayoutRes(): Int
 
     override fun onCreateView(inflater: LayoutInflater, root: ViewGroup?, state: Bundle?): View? {
-        val config: DataBindingConfig = getDataBindingConfig()
-        binding = DataBindingUtil.inflate(inflater, config.layoutId, root, false)
-        binding?.let { isBindingInit = true }
-        binding?.lifecycleOwner = viewLifecycleOwner
-        config.params.forEach { key, value ->
-            binding?.setVariable(key, value)
-        }
-        return binding?.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding?.unbind()
-        binding = null
-        isBindingInit = false
-    }
-
-    fun getBinding(): BINDING {
-        if (isBindingInit) {
-            return binding!!
-        } else {
-            throw NullPointerException("binding has not init!")
-        }
+        binding = DataBindingUtil.inflate(inflater, getLayoutRes(), root, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     protected fun nav(): NavController {

@@ -6,8 +6,18 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.cai.app.feature.MainFragment"
+        android:name="com.cai.app.feature.main.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.cai.app.feature.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>

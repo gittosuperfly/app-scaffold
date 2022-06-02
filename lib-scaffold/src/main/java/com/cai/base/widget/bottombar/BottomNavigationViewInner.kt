@@ -25,8 +25,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarItemView
 import com.google.android.material.navigation.NavigationBarMenuView
-import com.kotlin.safeFieldGet
-import com.kotlin.safeFieldSet
+import com.cai.base.kotlin_ext.safeFieldGet
+import com.cai.base.kotlin_ext.safeFieldSet
 import kotlin.math.ceil
 
 @SuppressLint("RestrictedApi")

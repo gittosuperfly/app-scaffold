@@ -3,15 +3,11 @@ package com.cai.base.widget.bottombar
 import android.view.MenuItem
 
 interface IMenuListener {
-    fun onNavigationItemSelected(position: Int, menu: MenuItem, isReSelected: Boolean): Boolean
+    fun onNavigationItemSelected(index: Int, menu: MenuItem, isReSel: Boolean): Boolean
 }
 
 abstract class AbsMenuListener : IMenuListener {
-    override fun onNavigationItemSelected(
-        position: Int,
-        menu: MenuItem,
-        isReSelected: Boolean
-    ): Boolean {
+    override fun onNavigationItemSelected(index: Int, menu: MenuItem, isReSel: Boolean): Boolean {
         return true
     }
 

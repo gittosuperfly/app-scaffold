@@ -1,6 +1,6 @@
 package com.cai.app
 
-import android.util.Log
+import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModel
 import com.cai.app.data.store.TestStore
 import com.cai.base.livedata.UnPeekLiveData
@@ -12,11 +12,8 @@ class MainShareViewModel @Inject constructor(
     private val testStore: TestStore
 ) : ViewModel() {
 
-    val text = UnPeekLiveData<String>().apply {
-        value = "Hello!!!!!!!!"
-    }
+    val statusBarDark = UnPeekLiveData<Boolean>()
+    val isDrawerOpened = ObservableBoolean()
 
-    fun init() {
-        Log.d("TAG", "testStore.getData() = ${testStore.getData()}")
-    }
+
 }

@@ -6,5 +6,5 @@ import com.cai.architecture.ui.databinding.DataBindingConfig
 import com.cai.architecture.ui.databinding.DataBindingFragment
 
 class HomeFragment : DataBindingFragment<FragmentHomeBinding>() {
-    override fun getDataBindingConfig() = DataBindingConfig(R.layout.fragment_home)
+    override fun getLayoutRes() = R.layout.fragment_home
 }

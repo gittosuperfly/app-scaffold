@@ -5,39 +5,17 @@
 
     <data>
 
-        <variable
-            name="vm"
-            type="com.cai.app.feature.MainViewModel" />
-
-        <variable
-            name="click"
-            type="com.cai.app.feature.MainFragment.ClickProxy" />
-
     </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.cai.app.feature.MainFragment">
+        tools:context="com.cai.app.feature.main.MainFragment">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/fragment_pager"
+        <com.cai.app.feature.main.MainTabView
+            android:id="@+id/main_tab"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constrainedHeight="true"
-            app:layout_constraintBottom_toTopOf="@id/bottom_nav_bar"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <com.cai.base.widget.bottombar.BottomNavigationView
-            android:id="@+id/bottom_nav_bar"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/red"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

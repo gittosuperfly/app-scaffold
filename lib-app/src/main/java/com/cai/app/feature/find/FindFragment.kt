@@ -6,5 +6,5 @@ import com.cai.architecture.ui.databinding.DataBindingConfig
 import com.cai.architecture.ui.databinding.DataBindingFragment
 
 class FindFragment : DataBindingFragment<FragmentFindBinding>() {
-    override fun getDataBindingConfig() = DataBindingConfig(R.layout.fragment_find)
+    override fun getLayoutRes() = R.layout.fragment_find
 }
