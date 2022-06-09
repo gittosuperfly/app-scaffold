@@ -6,25 +6,15 @@ import androidx.core.util.forEach
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-abstract class DataBindingActivity : AppCompatActivity() {
+abstract class DataBindingActivity <BINDING : ViewDataBinding> : AppCompatActivity() {
 
-    private var binding: ViewDataBinding? = null
+    lateinit var binding: BINDING
 
-    protected abstract fun getDataBindingConfig(): DataBindingConfig
+    protected abstract fun getLayoutRes(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val config = getDataBindingConfig()
-        binding = DataBindingUtil.setContentView(this, config.layoutId)
-        binding?.lifecycleOwner = this
-        config.params.forEach { key, value ->
-            binding?.setVariable(key, value)
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        binding?.unbind()
-        binding = null
+        binding = DataBindingUtil.setContentView(this, getLayoutRes())
+        binding.lifecycleOwner = this
     }
 }
