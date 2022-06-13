@@ -3,7 +3,15 @@ apply from: "../config.gradle"
 
 dependencies {
     implementation 'com.tencent:mmkv-static:1.2.13'
-    api 'com.hi-dhl:binding:1.1.5'
     api "androidx.navigation:navigation-ui:2.4.2"
     api "androidx.navigation:navigation-fragment-ktx:2.4.2"
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+
+
+    /**
+     * 已经内置的库
+     */
+    // api 'com.hi-dhl:binding:1.1.5'
+
 }

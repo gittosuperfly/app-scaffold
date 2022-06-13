@@ -1,10 +1,20 @@
 package com.cai.app.feature.find
 
-import com.cai.app.R
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.cai.app.databinding.FragmentFindBinding
-import com.cai.architecture.ui.databinding.DataBindingConfig
-import com.cai.architecture.ui.databinding.DataBindingFragment
+import com.cai.architecture.ui.base.BaseFragment
+import com.cai.base.binding.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class FindFragment : DataBindingFragment<FragmentFindBinding>() {
-    override fun getLayoutRes() = R.layout.fragment_find
+@AndroidEntryPoint
+class FindFragment : BaseFragment() {
+
+    private val binding:FragmentFindBinding by viewBinding()
+
+    override fun onCreateView(inflater: LayoutInflater, root: ViewGroup?, state: Bundle?): View {
+        return binding.root
+    }
 }

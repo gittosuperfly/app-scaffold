@@ -1,16 +1,22 @@
 package com.cai.app.feature.main
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import com.cai.app.R
+import android.view.ViewGroup
 import com.cai.app.databinding.FragmentMainBinding
-import com.cai.architecture.ui.databinding.DataBindingFragment
+import com.cai.architecture.ui.base.BaseFragment
+import com.cai.base.binding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : DataBindingFragment<FragmentMainBinding>() {
+class MainFragment : BaseFragment() {
 
-    override fun getLayoutRes() = R.layout.fragment_main
+    private val binding: FragmentMainBinding by viewBinding()
+
+    override fun onCreateView(inflater: LayoutInflater, root: ViewGroup?, state: Bundle?): View {
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

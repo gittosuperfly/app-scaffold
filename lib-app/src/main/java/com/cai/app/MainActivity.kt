@@ -2,28 +2,33 @@ package com.cai.app
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.core.view.ViewCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.cai.app.databinding.ActivityMainBinding
-import com.cai.architecture.ui.databinding.DataBindingActivity
+import com.cai.base.binding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : DataBindingActivity<ActivityMainBinding>() {
+class MainActivity : AppCompatActivity() {
 
+    private val binding: ActivityMainBinding by viewBinding()
     private val viewModel: MainShareViewModel by viewModels()
-
-    override fun getLayoutRes(): Int = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        observerInit()
-        viewModel.statusBarDark.value = true
+        setContentView(binding.root)
+        subscribe()
+        initData()
     }
 
-    private fun observerInit() {
+    private fun subscribe() {
         viewModel.statusBarDark.observe(this) {
-            val controller = ViewCompat.getWindowInsetsController(window.decorView)
-            controller?.isAppearanceLightStatusBars = it
+            val controller = WindowCompat.getInsetsController(window, window.decorView)
+            controller.isAppearanceLightStatusBars = it
         }
+    }
+
+    private fun initData() {
+        viewModel.statusBarDark.value = true
     }
 }

@@ -1,10 +1,19 @@
 package com.cai.app.feature.home
 
-import com.cai.app.R
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.cai.app.databinding.FragmentHomeBinding
-import com.cai.architecture.ui.databinding.DataBindingConfig
-import com.cai.architecture.ui.databinding.DataBindingFragment
+import com.cai.architecture.ui.base.BaseFragment
+import com.cai.base.binding.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class HomeFragment : DataBindingFragment<FragmentHomeBinding>() {
-    override fun getLayoutRes() = R.layout.fragment_home
+@AndroidEntryPoint
+class HomeFragment : BaseFragment() {
+    private val binding: FragmentHomeBinding by viewBinding()
+
+    override fun onCreateView(inflater: LayoutInflater, root: ViewGroup?, state: Bundle?): View {
+        return binding.root
+    }
 }
