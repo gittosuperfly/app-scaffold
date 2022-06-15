@@ -84,8 +84,8 @@ class BottomNavigationView : View, IBottomNavigation<com.google.android.material
         }
     }
 
-    fun setItem(index: Int, text: String?, @DrawableRes icon: Int) {
-        getMenu().add(0, index, index, text).setIcon(icon)
+    fun setItem(id: Int, index: Int, text: String?, @DrawableRes icon: Int) {
+        getMenu().add(Menu.NONE, id, index, text).setIcon(icon)
     }
 
     override fun setIconVisibility(visibility: Boolean): BottomNavigationView {

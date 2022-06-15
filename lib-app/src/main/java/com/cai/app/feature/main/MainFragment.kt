@@ -20,7 +20,19 @@ class MainFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.mainTab.setTabItemList(MainTabHosts.defaultTabs)
+        binding.mainTab.setTabItemList(MainTabHost.defaultTabs)
+
+        binding.mainTab.setBadgeCount(MainTabHost.HOME, 6)
+        binding.mainTab.setBadgeCount(MainTabHost.FIND, 132)
+        binding.mainTab.setBadgeRedDot(MainTabHost.USER,true)
+
+        binding.mainTab.setOnTabClickListener(object : MainTabView.OnTabClickListener {
+            override fun clickTab(tab: MainTabHost) {
+                binding.mainTab.clearBadge(tab)
+            }
+        })
+
+
     }
 
 

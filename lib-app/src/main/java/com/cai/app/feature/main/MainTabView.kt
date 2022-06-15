@@ -3,8 +3,10 @@ package com.cai.app.feature.main
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -35,7 +37,7 @@ class MainTabView : ConstraintLayout {
     lateinit var viewPager: ViewPager2
     lateinit var bottomNavBarView: BottomNavigationView
 
-    val tabItems = mutableListOf<MainTabHosts>()
+    val tabItems = mutableListOf<MainTabHost>()
 
 
     private fun initView(context: Context) {
@@ -45,15 +47,61 @@ class MainTabView : ConstraintLayout {
         bottomNavBarView = findViewById(R.id.bottom_nav_bar)
     }
 
-    fun setTabItemList(items: List<MainTabHosts>) {
+    fun setBadgeCount(tab: MainTabHost, count: Int) {
+        val badge = bottomNavBarView.realView.getOrCreateBadge(tab.hashCode())
+        badge.backgroundColor = context.getColor(R.color.red)
+        badge.badgeTextColor = context.getColor(R.color.white)
+        badge.maxCharacterCount = 3
+        if (count == 0) {
+            badge.isVisible = false
+        } else {
+            badge.number = count
+            badge.isVisible = true
+        }
+    }
+
+    fun setBadgeRedDot(tab: MainTabHost, shown:Boolean) {
+        val badge = bottomNavBarView.realView.getOrCreateBadge(tab.hashCode())
+        badge.backgroundColor = context.getColor(R.color.red)
+        if (shown){
+            badge.clearNumber()
+            badge.isVisible = true
+        }else{
+            badge.isVisible = false
+        }
+    }
+
+    fun setTabItemList(items: List<MainTabHost>) {
         tabItems.clear()
         tabItems.addAll(items)
         updateView()
     }
 
+    fun clearBadge(tab: MainTabHost){
+        val badge = bottomNavBarView.realView.getOrCreateBadge(tab.hashCode())
+        badge.isVisible = false
+    }
 
-    fun setOnTabClickListener(listener: IMenuListener) {
-        bottomNavBarView.setMenuListener(listener)
+    fun setOnTabClickListener(listener: OnTabClickListener) {
+        bottomNavBarView.setMenuListener(object : IMenuListener {
+            override fun onNavigationItemSelected(
+                index: Int,
+                menu: MenuItem,
+                isReSel: Boolean
+            ): Boolean {
+                listener.clickTab(tabItems[index])
+                return true
+            }
+        })
+    }
+
+    fun getMenuItem(tab: MainTabHost): MenuItem? {
+        val index = tabItems.indexOf(tab)
+        return if (index == -1) {
+            null
+        } else {
+            bottomNavBarView.getMenu()[index]
+        }
     }
 
     private fun updateView() {
@@ -70,11 +118,15 @@ class MainTabView : ConstraintLayout {
 
         bottomNavBarView.apply {
             for (i in 0 until tabItems.size) {
-                setItem(i, tabItems[i].text, tabItems[i].icon)
+                setItem(tabItems[i].hashCode(), i, tabItems[i].text, tabItems[i].icon)
             }
             enableAnimation(false)
             enableItemHorizontalTranslation(false)
             setupWithViewPager2(viewPager)
         }
+    }
+
+    interface OnTabClickListener {
+        fun clickTab(tab: MainTabHost)
     }
 }

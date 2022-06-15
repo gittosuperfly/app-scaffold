@@ -6,7 +6,7 @@ import com.cai.app.feature.find.FindFragment
 import com.cai.app.feature.home.HomeFragment
 import com.cai.app.feature.user.UserFragment
 
-enum class MainTabHosts constructor(
+enum class MainTabHost constructor(
     val text: String,
     val icon: Int,
     val fragmentClass: Class<out Fragment>
