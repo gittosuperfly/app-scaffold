@@ -8,7 +8,7 @@ android {
 }
 
 dependencies {
-    implementation project(":lib-architecture")
-    implementation project(":lib-domain")
+    implementation project(':core-architecture')
+    implementation project(':core-domain')
     implementation project(":lib-scaffold")
 }
