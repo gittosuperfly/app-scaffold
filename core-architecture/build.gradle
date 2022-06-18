@@ -16,4 +16,6 @@ dependencies {
     api "androidx.lifecycle:lifecycle-process:2.4.1"
 
     implementation project(":lib-scaffold")
+    implementation project(':lib-startup:startup')
+    kapt project(':lib-startup:startup-compiler')
 }

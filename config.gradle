@@ -31,6 +31,12 @@ android {
     }
 }
 
+kapt {
+    arguments {
+        arg("moduleName", project.name)
+    }
+}
+
 /**
  * 一些公共的常用的库 在这里统一加载进来
  */
