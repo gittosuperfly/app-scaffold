@@ -1,5 +1,5 @@
 rootProject.name = "protonstar"
-include ':app'
+include ':app-feature'
 include ':core-architecture'
 include ':core-domain'
 include ':lib-scaffold'
