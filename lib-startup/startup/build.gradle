@@ -1,9 +1,0 @@
-apply plugin: 'com.android.library'
-apply from: "../../config.gradle"
-
-
-dependencies {
-    api "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
-    api project(':lib-startup:startup-annotation')
-}

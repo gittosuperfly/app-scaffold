@@ -3,8 +3,3 @@ include ':app-feature'
 include ':core-architecture'
 include ':core-domain'
 include ':lib-scaffold'
-
-
-include ':lib-startup:startup'
-include ':lib-startup:startup-annotation'
-include ':lib-startup:startup-compiler'

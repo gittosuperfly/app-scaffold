@@ -11,7 +11,5 @@ dependencies {
     implementation project(':core-architecture')
     implementation project(':core-domain')
     implementation project(":lib-scaffold")
-    implementation project(':lib-startup:startup')
-    kapt project(':lib-startup:startup-compiler')
 
 }
